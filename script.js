@@ -9,7 +9,11 @@ const pinError = document.getElementById("pin-error");
 
 const content = document.getElementById("content");
 
-const menuItems = document.querySelectorAll(".menu-item");
+const menuItems =
+  document.querySelectorAll(".menu-item");
+
+const submenuItems =
+  document.querySelectorAll(".submenu-item");
 
 
 /* =========================================
@@ -17,25 +21,31 @@ const menuItems = document.querySelectorAll(".menu-item");
 ========================================= */
 
 function refreshIcons() {
+
   if (window.lucide) {
+
     lucide.createIcons();
+
   }
+
 }
 
 
 /* =========================================
-   자료실 화면
+   공통 서식 화면
 ========================================= */
 
-function showFormsPage() {
+function showFormsCategory(
+  title,
+  description
+) {
 
   content.innerHTML = `
 
-    <h1>서식 다운로드</h1>
+    <h1>${title}</h1>
 
     <p>
-      대학 AI 기본교육과정 개발 지원 사업의
-      사업비 집행에 필요한 서식을 확인하고 다운로드할 수 있습니다.
+      ${description}
     </p>
 
 
@@ -47,17 +57,22 @@ function showFormsPage() {
         <div class="file-info">
 
           <div class="file-icon">
+
             <i data-lucide="file-text"></i>
+
           </div>
 
 
           <div class="file-text">
 
             <div class="file-name">
+
               서식 파일
+
               <span class="file-type">
                 준비 중
               </span>
+
             </div>
 
 
@@ -91,7 +106,71 @@ function showFormsPage() {
 
   `;
 
+
   refreshIcons();
+
+}
+
+
+/* =========================================
+   AI 기본교육과정 개발·운영 관련 서식
+========================================= */
+
+function showAiBasicFormsPage() {
+
+  showFormsCategory(
+
+    "AI 기본교육과정 개발·운영 관련 서식",
+
+    "대학 AI 기본교육과정 개발 및 운영에 필요한 서식을 확인하고 다운로드할 수 있습니다."
+
+  );
+
+}
+
+
+/* =========================================
+   교수자 AI 역량 강화 프로그램 관련 서식
+========================================= */
+
+function showInstructorAiFormsPage() {
+
+  showFormsCategory(
+
+    "교수자 AI 역량 강화 프로그램 관련 서식",
+
+    "교수자 AI 역량 강화 프로그램 운영에 필요한 서식을 확인하고 다운로드할 수 있습니다."
+
+  );
+
+}
+
+
+/* =========================================
+   예산 집행 시 필요 서식
+========================================= */
+
+function showBudgetFormsPage() {
+
+  showFormsCategory(
+
+    "예산 집행 시 필요 서식",
+
+    "대학 AI 기본교육과정 개발 지원 사업의 예산 집행에 필요한 서식을 확인하고 다운로드할 수 있습니다."
+
+  );
+
+}
+
+
+/* =========================================
+   기존 서식 다운로드 기본 화면
+========================================= */
+
+function showFormsPage() {
+
+  showAiBasicFormsPage();
+
 }
 
 
@@ -176,7 +255,140 @@ function showContactPage() {
 
   `;
 
+
   refreshIcons();
+
+}
+
+
+/* =========================================
+   메뉴 활성화
+========================================= */
+
+function setActiveMenu(page) {
+
+
+  menuItems.forEach(
+    function(item) {
+
+      item.classList.remove("active");
+
+    }
+  );
+
+
+  submenuItems.forEach(
+    function(item) {
+
+      item.classList.remove("active");
+
+    }
+  );
+
+
+  /* 서식 관련 페이지라면
+     서식 다운로드 상위 메뉴 활성화 */
+
+  if (
+    page === "forms" ||
+    page === "ai-basic-forms" ||
+    page === "instructor-ai-forms" ||
+    page === "budget-forms"
+  ) {
+
+    const formsMenu =
+      document.querySelector(
+        '.menu-item[data-page="forms"]'
+      );
+
+    if (formsMenu) {
+
+      formsMenu.classList.add("active");
+
+    }
+
+  }
+
+
+  /* 하위 메뉴 활성화 */
+
+  const submenu =
+    document.querySelector(
+      `.submenu-item[data-page="${page}"]`
+    );
+
+
+  if (submenu) {
+
+    submenu.classList.add("active");
+
+  }
+
+
+  /* 문의처 */
+
+  if (page === "contact") {
+
+    const contactMenu =
+      document.querySelector(
+        '.menu-item[data-page="contact"]'
+      );
+
+    if (contactMenu) {
+
+      contactMenu.classList.add("active");
+
+    }
+
+  }
+
+}
+
+
+/* =========================================
+   페이지 이동
+========================================= */
+
+function showPage(page) {
+
+
+  if (page === "forms") {
+
+    showFormsPage();
+
+  }
+
+
+  if (page === "ai-basic-forms") {
+
+    showAiBasicFormsPage();
+
+  }
+
+
+  if (page === "instructor-ai-forms") {
+
+    showInstructorAiFormsPage();
+
+  }
+
+
+  if (page === "budget-forms") {
+
+    showBudgetFormsPage();
+
+  }
+
+
+  if (page === "contact") {
+
+    showContactPage();
+
+  }
+
+
+  setActiveMenu(page);
+
 }
 
 
@@ -186,7 +398,8 @@ function showContactPage() {
 
 function checkPin() {
 
-  const enteredPin = pinInput.value.trim();
+  const enteredPin =
+    pinInput.value.trim();
 
 
   if (enteredPin === CORRECT_PIN) {
@@ -197,14 +410,21 @@ function checkPin() {
 
     pinError.textContent = "";
 
-    showFormsPage();
+
+    showPage("ai-basic-forms");
+
 
     window.scrollTo({
+
       top: 0,
+
       behavior: "smooth"
+
     });
 
+
     return;
+
   }
 
 
@@ -215,6 +435,7 @@ function checkPin() {
   pinInput.value = "";
 
   pinInput.focus();
+
 }
 
 
@@ -247,7 +468,7 @@ pinInput.addEventListener(
 
 
 /* =========================================
-   메뉴 클릭
+   상위 메뉴 클릭
 ========================================= */
 
 menuItems.forEach(
@@ -260,36 +481,38 @@ menuItems.forEach(
         event.preventDefault();
 
 
-        menuItems.forEach(
-          function(menu) {
-
-            menu.classList.remove(
-              "active"
-            );
-
-          }
-        );
+        const page =
+          item.getAttribute("data-page");
 
 
-        item.classList.add("active");
+        showPage(page);
+
+      }
+    );
+
+  }
+);
+
+
+/* =========================================
+   하위 메뉴 클릭
+========================================= */
+
+submenuItems.forEach(
+  function(item) {
+
+    item.addEventListener(
+      "click",
+      function(event) {
+
+        event.preventDefault();
 
 
         const page =
           item.getAttribute("data-page");
 
 
-        if (page === "forms") {
-
-          showFormsPage();
-
-        }
-
-
-        if (page === "contact") {
-
-          showContactPage();
-
-        }
+        showPage(page);
 
       }
     );
