@@ -1,56 +1,87 @@
-<nav class="menu">
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    서울여자대학교 교수·학습센터 | 사업비 집행 지침 안내
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+</head>
 
 
-  <!-- 서식 다운로드 -->
-
-  <div class="menu-group">
-
-    <a
-      href="#"
-      class="menu-item active"
-      data-page="forms"
-    >
-
-      <span class="icon">
-        <i data-lucide="file-down"></i>
-      </span>
-
-      <span>
-        서식 다운로드
-      </span>
-
-    </a>
+<body>
 
 
-    <!-- 서식 다운로드 하위 카테고리 -->
+  <!-- =========================================
+       PIN 인증 화면
+  ========================================== -->
 
-    <div class="submenu">
+  <div id="pin-screen">
 
-      <a
-        href="#"
-        class="submenu-item active"
-        data-page="ai-basic-forms"
-      >
-        AI 기본교육과정 개발·운영 관련 서식
-      </a>
+    <div class="pin-card">
 
-
-      <a
-        href="#"
-        class="submenu-item"
-        data-page="instructor-ai-forms"
-      >
-        교수자 AI 역량 강화 프로그램 관련 서식
-      </a>
+      <div class="pin-logo">
+        <i data-lucide="lock-keyhole"></i>
+      </div>
 
 
-      <a
-        href="#"
-        class="submenu-item"
-        data-page="budget-forms"
-      >
-        예산 집행 시 필요 서식
-      </a>
+      <div class="pin-organization">
+        서울여자대학교 교수·학습센터
+      </div>
+
+
+      <div class="pin-project">
+        대학 AI 기본교육과정 개발 지원 사업
+      </div>
+
+
+      <div class="pin-title">
+        사업비 집행 지침 안내
+      </div>
+
+
+      <p class="pin-description">
+        사업 운영 전담 인력 전용 페이지입니다.<br>
+        4자리 PIN을 입력해주세요.
+      </p>
+
+
+      <div class="pin-input-area">
+
+        <input
+          type="password"
+          id="pin-input"
+          inputmode="numeric"
+          maxlength="4"
+          placeholder="PIN 4자리"
+          autocomplete="off"
+        >
+
+
+        <button id="pin-button">
+          확인
+        </button>
+
+      </div>
+
+
+      <div
+        id="pin-error"
+        class="pin-error">
+      </div>
 
     </div>
 
@@ -58,22 +89,208 @@
 
 
 
-  <!-- 문의처 -->
+  <!-- =========================================
+       메인 페이지
+  ========================================== -->
 
-  <a
-    href="#"
-    class="menu-item"
-    data-page="contact"
-  >
+  <div id="main-page">
 
-    <span class="icon">
-      <i data-lucide="message-circle"></i>
-    </span>
+    <div class="container">
 
-    <span>
-      문의처
-    </span>
 
-  </a>
+      <!-- =====================================
+           상단 제목
+      ====================================== -->
 
-</nav>
+      <header>
+
+        <div class="organization">
+          서울여자대학교 교수·학습센터
+        </div>
+
+
+        <div class="project">
+          대학 AI 기본교육과정 개발 지원 사업
+        </div>
+
+
+        <div class="title">
+          사업비 집행 지침 안내
+        </div>
+
+      </header>
+
+
+
+      <!-- =====================================
+           메뉴
+      ====================================== -->
+
+      <nav class="menu">
+
+
+        <!-- 서식 다운로드 -->
+
+        <div class="menu-group">
+
+          <a
+            href="#"
+            class="menu-item active"
+            data-page="forms"
+          >
+
+            <span class="icon">
+              <i data-lucide="file-down"></i>
+            </span>
+
+
+            <span>
+              서식 다운로드
+            </span>
+
+          </a>
+
+
+          <!-- 서식 다운로드 하위 카테고리 -->
+
+          <div class="submenu">
+
+            <a
+              href="#"
+              class="submenu-item active"
+              data-page="ai-basic-forms"
+            >
+              AI 기본교육과정 개발·운영 관련 서식
+            </a>
+
+
+            <a
+              href="#"
+              class="submenu-item"
+              data-page="instructor-ai-forms"
+            >
+              교수자 AI 역량 강화 프로그램 관련 서식
+            </a>
+
+
+            <a
+              href="#"
+              class="submenu-item"
+              data-page="budget-forms"
+            >
+              예산 집행 시 필요 서식
+            </a>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- 문의처 -->
+
+        <a
+          href="#"
+          class="menu-item"
+          data-page="contact"
+        >
+
+          <span class="icon">
+            <i data-lucide="message-circle"></i>
+          </span>
+
+
+          <span>
+            문의처
+          </span>
+
+        </a>
+
+      </nav>
+
+
+
+      <!-- =====================================
+           본문
+      ====================================== -->
+
+      <main id="content">
+
+      </main>
+
+
+
+      <!-- =====================================
+           하단 담당자 정보
+      ====================================== -->
+
+      <footer class="site-footer">
+
+
+        <div class="footer-title">
+          서울여자대학교 대학 AI 기본교육과정 개발 지원 사업
+        </div>
+
+
+        <div class="footer-subtitle">
+          예산 집행 담당자
+        </div>
+
+
+        <div class="footer-info">
+          교수·학습센터 이재현 전임연구원
+        </div>
+
+
+        <div class="footer-contact">
+
+          <a
+            href="tel:02-970-5048"
+            class="footer-link"
+          >
+            02-970-5048
+          </a>
+
+          <span>
+            /
+          </span>
+
+          <a
+            href="mailto:jhyeon@swu.ac.kr"
+            class="footer-link"
+          >
+            jhyeon@swu.ac.kr
+          </a>
+
+        </div>
+
+      </footer>
+
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =========================================
+       Lucide 아이콘
+  ========================================== -->
+
+  <script
+    src="https://unpkg.com/lucide@latest"
+  ></script>
+
+
+  <!-- =========================================
+       JavaScript
+  ========================================== -->
+
+  <script
+    src="script.js"
+  ></script>
+
+
+</body>
+
+</html>
