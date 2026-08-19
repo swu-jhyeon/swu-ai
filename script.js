@@ -57,9 +57,7 @@ function showFormsCategory(
         <div class="file-info">
 
           <div class="file-icon">
-
             <i data-lucide="file-text"></i>
-
           </div>
 
 
@@ -164,7 +162,7 @@ function showBudgetFormsPage() {
 
 
 /* =========================================
-   기존 서식 다운로드 기본 화면
+   서식 다운로드 기본 화면
 ========================================= */
 
 function showFormsPage() {
@@ -267,7 +265,6 @@ function showContactPage() {
 
 function setActiveMenu(page) {
 
-
   menuItems.forEach(
     function(item) {
 
@@ -286,8 +283,7 @@ function setActiveMenu(page) {
   );
 
 
-  /* 서식 관련 페이지라면
-     서식 다운로드 상위 메뉴 활성화 */
+  /* 서식 관련 페이지 */
 
   if (
     page === "forms" ||
@@ -310,7 +306,7 @@ function setActiveMenu(page) {
   }
 
 
-  /* 하위 메뉴 활성화 */
+  /* 하위 메뉴 */
 
   const submenu =
     document.querySelector(
@@ -350,7 +346,6 @@ function setActiveMenu(page) {
 ========================================= */
 
 function showPage(page) {
-
 
   if (page === "forms") {
 
