@@ -1,19 +1,26 @@
 const CORRECT_PIN = "5048";
 
-const pinScreen = document.getElementById("pin-screen");
-const mainPage = document.getElementById("main-page");
 
-const pinInput = document.getElementById("pin-input");
-const pinButton = document.getElementById("pin-button");
-const pinError = document.getElementById("pin-error");
+const pinScreen =
+  document.getElementById("pin-screen");
 
-const content = document.getElementById("content");
+const mainPage =
+  document.getElementById("main-page");
+
+const pinInput =
+  document.getElementById("pin-input");
+
+const pinButton =
+  document.getElementById("pin-button");
+
+const pinError =
+  document.getElementById("pin-error");
+
+const content =
+  document.getElementById("content");
 
 const menuItems =
   document.querySelectorAll(".menu-item");
-
-const submenuItems =
-  document.querySelectorAll(".submenu-item");
 
 
 /* =========================================
@@ -32,17 +39,20 @@ function refreshIcons() {
 
 
 /* =========================================
-   공통 서식 화면
+   서식 페이지
 ========================================= */
 
-function showFormsCategory(
+function showFormsPage(
   title,
   description
 ) {
 
   content.innerHTML = `
 
-    <h1>${title}</h1>
+    <h1>
+      ${title}
+    </h1>
+
 
     <p>
       ${description}
@@ -54,14 +64,19 @@ function showFormsCategory(
 
       <div class="file-item">
 
+
         <div class="file-info">
 
+
           <div class="file-icon">
+
             <i data-lucide="file-text"></i>
+
           </div>
 
 
           <div class="file-text">
+
 
             <div class="file-name">
 
@@ -75,10 +90,15 @@ function showFormsCategory(
 
 
             <div class="file-description">
-              실제 서식 파일은 추후 등록 예정입니다.
+
+              실제 서식 파일은
+              추후 등록 예정입니다.
+
             </div>
 
+
           </div>
+
 
         </div>
 
@@ -97,6 +117,7 @@ function showFormsCategory(
 
         </a>
 
+
       </div>
 
 
@@ -111,68 +132,6 @@ function showFormsCategory(
 
 
 /* =========================================
-   AI 기본교육과정 개발·운영 관련 서식
-========================================= */
-
-function showAiBasicFormsPage() {
-
-  showFormsCategory(
-
-    "AI 기본교육과정 개발·운영 관련 서식",
-
-    "대학 AI 기본교육과정 개발 및 운영에 필요한 서식을 확인하고 다운로드할 수 있습니다."
-
-  );
-
-}
-
-
-/* =========================================
-   교수자 AI 역량 강화 프로그램 관련 서식
-========================================= */
-
-function showInstructorAiFormsPage() {
-
-  showFormsCategory(
-
-    "교수자 AI 역량 강화 프로그램 관련 서식",
-
-    "교수자 AI 역량 강화 프로그램 운영에 필요한 서식을 확인하고 다운로드할 수 있습니다."
-
-  );
-
-}
-
-
-/* =========================================
-   예산 집행 시 필요 서식
-========================================= */
-
-function showBudgetFormsPage() {
-
-  showFormsCategory(
-
-    "예산 집행 시 필요 서식",
-
-    "대학 AI 기본교육과정 개발 지원 사업의 예산 집행에 필요한 서식을 확인하고 다운로드할 수 있습니다."
-
-  );
-
-}
-
-
-/* =========================================
-   서식 다운로드 기본 화면
-========================================= */
-
-function showFormsPage() {
-
-  showAiBasicFormsPage();
-
-}
-
-
-/* =========================================
    문의처 화면
 ========================================= */
 
@@ -180,7 +139,10 @@ function showContactPage() {
 
   content.innerHTML = `
 
-    <h1>문의처</h1>
+    <h1>
+      문의처
+    </h1>
+
 
     <p>
       사업비 집행과 관련하여 문의사항이 있는 경우
@@ -205,7 +167,6 @@ function showContactPage() {
       </div>
 
 
-
       <div class="contact-row">
 
         <div class="contact-label">
@@ -225,7 +186,6 @@ function showContactPage() {
         </div>
 
       </div>
-
 
 
       <div class="contact-row">
@@ -260,10 +220,11 @@ function showContactPage() {
 
 
 /* =========================================
-   메뉴 활성화
+   페이지 전환
 ========================================= */
 
-function setActiveMenu(page) {
+function showPage(page) {
+
 
   menuItems.forEach(
     function(item) {
@@ -274,103 +235,54 @@ function setActiveMenu(page) {
   );
 
 
-  submenuItems.forEach(
-    function(item) {
-
-      item.classList.remove("active");
-
-    }
-  );
-
-
-  /* 서식 관련 페이지 */
-
-  if (
-    page === "forms" ||
-    page === "ai-basic-forms" ||
-    page === "instructor-ai-forms" ||
-    page === "budget-forms"
-  ) {
-
-    const formsMenu =
-      document.querySelector(
-        '.menu-item[data-page="forms"]'
-      );
-
-    if (formsMenu) {
-
-      formsMenu.classList.add("active");
-
-    }
-
-  }
-
-
-  /* 하위 메뉴 */
-
-  const submenu =
+  const selectedMenu =
     document.querySelector(
-      `.submenu-item[data-page="${page}"]`
+      `.menu-item[data-page="${page}"]`
     );
 
 
-  if (submenu) {
+  if (selectedMenu) {
 
-    submenu.classList.add("active");
-
-  }
-
-
-  /* 문의처 */
-
-  if (page === "contact") {
-
-    const contactMenu =
-      document.querySelector(
-        '.menu-item[data-page="contact"]'
-      );
-
-    if (contactMenu) {
-
-      contactMenu.classList.add("active");
-
-    }
-
-  }
-
-}
-
-
-/* =========================================
-   페이지 이동
-========================================= */
-
-function showPage(page) {
-
-  if (page === "forms") {
-
-    showFormsPage();
+    selectedMenu.classList.add("active");
 
   }
 
 
-  if (page === "ai-basic-forms") {
+  if (page === "ai-basic") {
 
-    showAiBasicFormsPage();
+    showFormsPage(
+
+      "AI 기본교육과정 개발·운영 관련 서식",
+
+      "대학 AI 기본교육과정 개발 및 운영에 필요한 서식을 확인하고 다운로드할 수 있습니다."
+
+    );
 
   }
 
 
-  if (page === "instructor-ai-forms") {
+  if (page === "instructor") {
 
-    showInstructorAiFormsPage();
+    showFormsPage(
+
+      "교수자 AI 역량 강화 프로그램 관련 서식",
+
+      "교수자 AI 역량 강화 프로그램 운영에 필요한 서식을 확인하고 다운로드할 수 있습니다."
+
+    );
 
   }
 
 
-  if (page === "budget-forms") {
+  if (page === "budget") {
 
-    showBudgetFormsPage();
+    showFormsPage(
+
+      "예산 집행 시 필요 서식",
+
+      "대학 AI 기본교육과정 개발 지원 사업의 예산 집행에 필요한 서식을 확인하고 다운로드할 수 있습니다."
+
+    );
 
   }
 
@@ -381,9 +293,6 @@ function showPage(page) {
 
   }
 
-
-  setActiveMenu(page);
-
 }
 
 
@@ -393,20 +302,27 @@ function showPage(page) {
 
 function checkPin() {
 
+
   const enteredPin =
     pinInput.value.trim();
 
 
   if (enteredPin === CORRECT_PIN) {
 
-    pinScreen.style.display = "none";
 
-    mainPage.style.display = "block";
-
-    pinError.textContent = "";
+    pinScreen.style.display =
+      "none";
 
 
-    showPage("ai-basic-forms");
+    mainPage.style.display =
+      "block";
+
+
+    pinError.textContent =
+      "";
+
+
+    showPage("ai-basic");
 
 
     window.scrollTo({
@@ -427,7 +343,9 @@ function checkPin() {
     "PIN 번호가 올바르지 않습니다.";
 
 
-  pinInput.value = "";
+  pinInput.value =
+    "";
+
 
   pinInput.focus();
 
@@ -435,7 +353,7 @@ function checkPin() {
 
 
 /* =========================================
-   PIN 버튼 클릭
+   PIN 버튼
 ========================================= */
 
 pinButton.addEventListener(
@@ -445,7 +363,7 @@ pinButton.addEventListener(
 
 
 /* =========================================
-   Enter 키로 PIN 인증
+   Enter 키
 ========================================= */
 
 pinInput.addEventListener(
@@ -463,7 +381,7 @@ pinInput.addEventListener(
 
 
 /* =========================================
-   상위 메뉴 클릭
+   메뉴 클릭
 ========================================= */
 
 menuItems.forEach(
@@ -490,37 +408,10 @@ menuItems.forEach(
 
 
 /* =========================================
-   하위 메뉴 클릭
+   초기 화면
 ========================================= */
 
-submenuItems.forEach(
-  function(item) {
-
-    item.addEventListener(
-      "click",
-      function(event) {
-
-        event.preventDefault();
-
-
-        const page =
-          item.getAttribute("data-page");
-
-
-        showPage(page);
-
-      }
-    );
-
-  }
-);
-
-
-/* =========================================
-   처음 로딩될 때
-========================================= */
-
-showFormsPage();
+showPage("ai-basic");
 
 refreshIcons();
 
