@@ -1,3 +1,4 @@
+```javascript
 const CORRECT_PIN = "5048";
 
 const pinScreen = document.getElementById("pin-screen");
@@ -45,11 +46,8 @@ function showFormsPage(
           <div class="file-info">
 
             <div class="file-icon">
-
               <i data-lucide="file-text"></i>
-
             </div>
-
 
             <div class="file-text">
 
@@ -155,13 +153,11 @@ function showContactPage() {
 
     <div class="contact-box">
 
-
       <div class="contact-row">
 
         <div class="contact-label">
           예산 집행 담당자
         </div>
-
 
         <div class="contact-value">
           교수·학습센터 이재현 전임연구원
@@ -170,13 +166,11 @@ function showContactPage() {
       </div>
 
 
-
       <div class="contact-row">
 
         <div class="contact-label">
           연락처
         </div>
-
 
         <div class="contact-value">
 
@@ -192,13 +186,11 @@ function showContactPage() {
       </div>
 
 
-
       <div class="contact-row">
 
         <div class="contact-label">
           이메일
         </div>
-
 
         <div class="contact-value">
 
@@ -212,7 +204,6 @@ function showContactPage() {
         </div>
 
       </div>
-
 
     </div>
 
@@ -289,12 +280,7 @@ function showPage(page) {
 
       "교수자 AI 역량 강화 프로그램 운영에 필요한 서식을 확인하고 다운로드할 수 있습니다.",
 
-      [
-        {
-          name: "1. 프로그램 운영 계획(안) 양식",
-          link: "프로그램_운영_계획(안)_양식.hwp"
-        }
-      ]
+      []
 
     );
 
@@ -382,21 +368,16 @@ function checkPin() {
 
   if (enteredPin === CORRECT_PIN) {
 
-
     pinScreen.style.display =
       "none";
-
 
     mainPage.style.display =
       "block";
 
-
     pinError.textContent =
       "";
 
-
     showPage("ai-basic");
-
 
     window.scrollTo({
 
@@ -405,7 +386,6 @@ function checkPin() {
       behavior: "smooth"
 
     });
-
 
     return;
 
@@ -497,3 +477,4 @@ showPage("ai-basic");
 refreshIcons();
 
 pinInput.focus();
+```
