@@ -9,20 +9,12 @@ const content = document.getElementById("content");
 const menuItems = document.querySelectorAll(".menu-item");
 
 
-/* =========================================
-   아이콘
-========================================= */
-
 function refreshIcons() {
   if (window.lucide) {
     lucide.createIcons();
   }
 }
 
-
-/* =========================================
-   서식 화면
-========================================= */
 
 function showFormsPage(title, description, fileName, fileLink = null) {
 
@@ -96,7 +88,7 @@ function showFormsPage(title, description, fileName, fileLink = null) {
 
 
 /* =========================================
-   예산 집행 필요 서식
+   예산 집행 시 필요 서식
 ========================================= */
 
 function showBudgetPage() {
@@ -115,7 +107,17 @@ function showBudgetPage() {
 
     "6. 회의비",
 
-    "7. 간담회비"
+    "7. 간담회비",
+
+    "8. 기념품 관리대장",
+
+    "9. 기념품 수취대장",
+
+    "10. 상품권(유가증권, 상품 등) 수취대장",
+
+    "11. 현장학습(필드워크) 신청서",
+
+    "12. 현장학습(필드워크) 결과보고서"
 
   ];
 
