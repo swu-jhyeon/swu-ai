@@ -1,1031 +1,476 @@
-```css
 * {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
-
-  background: #f3eef0;
-
-  color: #333333;
-
-  font-family:
-    Arial,
-    "Noto Sans KR",
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", sans-serif;
+  background: #f5f7fb;
+  color: #1f2937;
 }
 
+button,
+input,
+a {
+  font: inherit;
+}
 
-/* =========================================
-   PIN 화면
-========================================= */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* PIN */
 
 #pin-screen {
   min-height: 100vh;
-
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
-  padding: 30px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #f4e9ee 0%,
-      #ead7df 100%
-    );
+  padding: 24px;
+  background: #f5f7fb;
 }
-
 
 .pin-card {
-  width:
-    min(460px, 100%);
-
-  padding:
-    48px 45px 45px;
-
+  width: 100%;
+  max-width: 440px;
+  padding: 42px 36px;
   background: #ffffff;
-
   border-radius: 20px;
-
+  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
   text-align: center;
-
-  box-shadow:
-    0 20px 60px rgba(
-      70,
-      20,
-      45,
-      0.15
-    );
 }
-
 
 .pin-logo {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 22px;
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
-  width: 58px;
-
-  height: 58px;
-
-  margin:
-    0 auto 25px;
-
-  color: #ffffff;
-
-  background: #7a1f3d;
-
-  border-radius: 15px;
+  border-radius: 50%;
+  background: #eef2ff;
+  color: #4f46e5;
 }
-
 
 .pin-logo svg {
-  width: 27px;
-
-  height: 27px;
-
-  stroke-width: 1.8;
+  width: 30px;
+  height: 30px;
 }
-
 
 .pin-organization {
-  margin-bottom: 13px;
-
   font-size: 15px;
-
-  font-weight: 600;
-
-  color: #7a1f3d;
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 8px;
 }
-
 
 .pin-project {
-  font-size: 24px;
-
-  font-weight: 700;
-
-  line-height: 1.45;
-
-  letter-spacing: -0.6px;
-
-  color: #333333;
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 18px;
 }
-
 
 .pin-title {
-  margin-top: 7px;
-
-  font-size: 17px;
-
-  color: #777777;
+  font-size: 27px;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 16px;
 }
-
 
 .pin-description {
-  margin:
-    28px 0 22px;
-
+  margin: 0 0 26px;
+  color: #6b7280;
+  line-height: 1.7;
   font-size: 14px;
-
-  line-height: 1.8;
-
-  color: #888888;
 }
-
 
 .pin-input-area {
   display: flex;
-
-  gap: 9px;
+  gap: 10px;
 }
-
 
 #pin-input {
-  width: 100%;
-
+  flex: 1;
+  min-width: 0;
   height: 50px;
-
-  padding:
-    0 16px;
-
-  border:
-    1px solid #dcd0d5;
-
-  border-radius: 9px;
-
+  padding: 0 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
   outline: none;
-
-  font-size: 17px;
-
-  letter-spacing: 4px;
-
   text-align: center;
-
-  color: #333333;
-
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
+  letter-spacing: 4px;
+  font-size: 18px;
 }
-
 
 #pin-input:focus {
-  border-color: #7a1f3d;
-
-  box-shadow:
-    0 0 0 3px rgba(
-      122,
-      31,
-      61,
-      0.08
-    );
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
 }
-
-
-#pin-input::placeholder {
-  letter-spacing: 0;
-
-  color: #aaaaaa;
-
-  font-size: 14px;
-}
-
 
 #pin-button {
-  width: 80px;
-
-  flex-shrink: 0;
-
-  border: none;
-
-  border-radius: 9px;
-
-  background: #7a1f3d;
-
+  width: 90px;
+  border: 0;
+  border-radius: 10px;
+  background: #4f46e5;
   color: #ffffff;
-
-  font-size: 15px;
-
-  font-weight: 600;
-
+  font-weight: 700;
   cursor: pointer;
-
-  transition:
-    background-color 0.2s ease,
-    transform 0.2s ease;
 }
-
 
 #pin-button:hover {
-  background: #5f1830;
-
-  transform: translateY(-1px);
+  background: #4338ca;
 }
-
 
 .pin-error {
   min-height: 22px;
-
   margin-top: 12px;
-
+  color: #dc2626;
   font-size: 13px;
-
-  color: #b42318;
 }
 
-
-/* =========================================
-   메인 페이지
-========================================= */
+/* Main */
 
 #main-page {
   display: none;
+  min-height: 100vh;
 }
-
 
 .container {
-  width:
-    min(1100px, calc(100% - 40px));
-
-  margin:
-    55px auto;
-
-  background: #ffffff;
-
-  border-radius: 18px;
-
-  overflow: hidden;
-
-  box-shadow:
-    0 12px 40px rgba(
-      70,
-      20,
-      45,
-      0.10
-    );
+  width: min(1100px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 60px 0 40px;
 }
 
-
-/* =========================================
-   상단
-========================================= */
+/* Header */
 
 header {
-  padding:
-    46px 52px 42px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #7a1f3d 0%,
-      #8d3152 100%
-    );
-
-  color: #ffffff;
+  text-align: center;
+  margin-bottom: 38px;
 }
-
 
 .organization {
-  margin-bottom: 18px;
-
-  font-size: 17px;
-
-  font-weight: 500;
-
-  letter-spacing: -0.3px;
-
-  opacity: 0.92;
+  font-size: 16px;
+  font-weight: 700;
+  color: #4b5563;
+  margin-bottom: 8px;
 }
-
 
 .project {
-  margin-bottom: 8px;
-
-  font-size: 30px;
-
-  font-weight: 700;
-
-  line-height: 1.45;
-
-  letter-spacing: -0.8px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #6366f1;
+  margin-bottom: 12px;
 }
-
 
 .title {
-  font-size: 19px;
-
-  line-height: 1.5;
-
-  letter-spacing: -0.3px;
-
-  opacity: 0.88;
+  font-size: 36px;
+  font-weight: 800;
+  color: #111827;
 }
 
-
-/* =========================================
-   메뉴
-========================================= */
+/* Menu */
 
 .menu {
-  display: flex;
-
-  background: #ffffff;
-
-  border-bottom:
-    1px solid #e7dce1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 38px;
 }
 
-
-.menu a {
-  position: relative;
-
+.menu-item {
+  min-height: 110px;
+  padding: 20px 12px;
   display: flex;
-
+  flex-direction: column;
   align-items: center;
-
   justify-content: center;
-
-  gap: 8px;
-
-  width: 25%;
-
-  min-height: 86px;
-
-  padding:
-    15px 10px;
-
-  text-decoration: none;
-
-  color: #555555;
-
-  font-size: 14px;
-
-  font-weight: 600;
-
-  line-height: 1.45;
-
-  letter-spacing: -0.4px;
-
+  gap: 11px;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  background: #ffffff;
+  color: #4b5563;
+  cursor: pointer;
+  transition: 0.2s ease;
   text-align: center;
-
-  transition:
-    background-color 0.2s ease,
-    color 0.2s ease;
 }
 
-
-.menu a:hover {
-  background: #faf5f7;
-
-  color: #7a1f3d;
+.menu-item:hover {
+  border-color: #a5b4fc;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.07);
 }
 
-
-.menu a.active {
-  background: #f8f0f3;
-
-  color: #7a1f3d;
+.menu-item.active {
+  border-color: #6366f1;
+  background: #eef2ff;
+  color: #4338ca;
 }
-
-
-.menu a.active::after {
-  content: "";
-
-  position: absolute;
-
-  left: 15%;
-
-  right: 15%;
-
-  bottom: 0;
-
-  height: 4px;
-
-  background: #7a1f3d;
-
-  border-radius:
-    4px 4px 0 0;
-}
-
 
 .icon {
-  display: inline-flex;
-
+  display: flex;
   align-items: center;
-
   justify-content: center;
-
-  width: 34px;
-
-  height: 34px;
-
-  flex-shrink: 0;
-
-  color: #7a1f3d;
-
-  background: #f0dfe6;
-
-  border-radius: 9px;
 }
-
 
 .icon svg {
-  width: 18px;
-
-  height: 18px;
-
-  stroke-width: 2;
+  width: 25px;
+  height: 25px;
 }
 
-
-.menu a:hover .icon,
-.menu a.active .icon {
-  color: #ffffff;
-
-  background: #7a1f3d;
-}
-
-
-/* =========================================
-   본문
-========================================= */
-
-main {
-  margin: 32px;
-
-  padding: 48px;
-
-  min-height: 420px;
-
-  background: #ffffff;
-
-  border:
-    1px solid #eee3e7;
-
-  border-radius: 14px;
-}
-
-
-main h1 {
-  margin:
-    0 0 10px;
-
-  font-size: 28px;
-
+.menu-text {
+  font-size: 14px;
   font-weight: 700;
-
-  letter-spacing: -0.5px;
-
-  color: #7a1f3d;
+  line-height: 1.45;
 }
 
+/* Content */
 
-main > p {
-  margin: 0;
-
-  font-size: 15px;
-
-  line-height: 1.8;
-
-  color: #777777;
+#content {
+  min-height: 300px;
 }
 
+#content h1 {
+  margin: 0 0 14px;
+  font-size: 27px;
+  color: #111827;
+}
 
-/* =========================================
-   자료실
-========================================= */
+#content > p {
+  margin: 0 0 24px;
+  color: #6b7280;
+  line-height: 1.7;
+}
+
+/* File */
 
 .content-box {
-  margin-top: 32px;
-
-  border:
-    1px solid #e7dce1;
-
-  border-radius: 12px;
-
-  overflow: hidden;
-
   background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  overflow: hidden;
 }
-
 
 .file-item {
+  min-height: 92px;
+  padding: 20px 22px;
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
-
-  gap: 25px;
-
-  min-height: 86px;
-
-  padding:
-    20px 22px;
-
-  border-bottom:
-    1px solid #eee6e9;
-
-  transition:
-    background-color 0.2s ease;
+  gap: 20px;
 }
-
-
-.file-item:last-child {
-  border-bottom: none;
-}
-
-
-.file-item:hover {
-  background: #fcf8fa;
-}
-
 
 .file-info {
   display: flex;
-
   align-items: center;
-
-  gap: 16px;
-
+  gap: 15px;
   min-width: 0;
 }
-
 
 .file-icon {
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  width: 42px;
-
-  height: 42px;
-
+  width: 46px;
+  height: 46px;
   flex-shrink: 0;
-
-  color: #7a1f3d;
-
-  background: #f4e8ed;
-
-  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: #eef2ff;
+  color: #4f46e5;
 }
-
 
 .file-icon svg {
-  width: 20px;
-
-  height: 20px;
+  width: 23px;
+  height: 23px;
 }
-
-
-.file-text {
-  min-width: 0;
-}
-
 
 .file-name {
   font-size: 15px;
-
-  font-weight: 600;
-
-  line-height: 1.5;
-
-  color: #333333;
+  font-weight: 700;
+  color: #374151;
 }
-
-
-/* =========================================
-   다운로드 버튼
-========================================= */
 
 .download-button {
-  display: inline-flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  gap: 7px;
-
   flex-shrink: 0;
-
-  min-width: 92px;
-
-  padding:
-    10px 14px;
-
-  border: none;
-
-  border-radius: 7px;
-
-  background: #7a1f3d;
-
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-width: 108px;
+  height: 42px;
+  padding: 0 14px;
+  border-radius: 9px;
+  background: #4f46e5;
   color: #ffffff;
-
-  text-decoration: none;
-
   font-size: 13px;
-
-  font-weight: 600;
-
-  cursor: pointer;
-
-  transition:
-    background-color 0.2s ease,
-    transform 0.2s ease;
+  font-weight: 700;
 }
-
-
-.download-button svg {
-  width: 15px;
-
-  height: 15px;
-}
-
 
 .download-button:hover {
-  background: #5f1830;
-
-  transform: translateY(-1px);
+  background: #4338ca;
 }
 
+.download-button svg {
+  width: 17px;
+  height: 17px;
+}
 
-/* =========================================
-   문의처
-========================================= */
+/* Contact */
 
 .contact-box {
-  margin-top: 32px;
-
-  padding:
-    8px 26px;
-
-  border:
-    1px solid #e7dce1;
-
-  border-radius: 12px;
-
   background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  overflow: hidden;
 }
-
 
 .contact-row {
-  display: flex;
-
-  align-items: center;
-
-  min-height: 64px;
-
-  border-bottom:
-    1px solid #eee6e9;
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  border-bottom: 1px solid #f0f1f3;
 }
-
 
 .contact-row:last-child {
-  border-bottom: none;
+  border-bottom: 0;
 }
-
 
 .contact-label {
-  width: 130px;
-
-  flex-shrink: 0;
-
-  font-size: 13px;
-
-  font-weight: 600;
-
-  color: #7a1f3d;
+  padding: 20px;
+  background: #f9fafb;
+  font-weight: 700;
+  color: #374151;
 }
-
 
 .contact-value {
-  font-size: 14px;
-
-  color: #444444;
+  padding: 20px;
+  color: #4b5563;
 }
-
 
 .contact-link {
-  color: #555555;
-
-  text-decoration: none;
-
-  border-bottom:
-    1px solid #d8c4cc;
-
-  transition:
-    color 0.2s ease,
-    border-color 0.2s ease;
+  color: #4f46e5;
+  font-weight: 600;
 }
 
-
-.contact-link:hover {
-  color: #7a1f3d;
-
-  border-color: #7a1f3d;
-}
-
-
-/* =========================================
-   하단 담당자 정보
-========================================= */
+/* Footer */
 
 .site-footer {
-  padding:
-    28px 40px 32px;
-
+  margin-top: 55px;
+  padding-top: 28px;
+  border-top: 1px solid #e5e7eb;
   text-align: center;
-
-  background: #faf7f8;
-
-  border-top:
-    1px solid #e7dce1;
-
-  color: #777777;
+  color: #6b7280;
+  font-size: 13px;
+  line-height: 1.8;
 }
-
 
 .footer-title {
-  margin-bottom: 7px;
-
-  font-size: 13px;
-
-  font-weight: 600;
-
-  line-height: 1.6;
-
-  color: #555555;
+  font-weight: 700;
+  color: #4b5563;
 }
-
 
 .footer-subtitle {
-  margin-bottom: 5px;
-
-  font-size: 12px;
-
-  color: #7a1f3d;
+  margin-top: 3px;
 }
-
 
 .footer-info {
-  margin-bottom: 4px;
-
-  font-size: 13px;
-
-  color: #555555;
+  margin-top: 2px;
 }
-
 
 .footer-contact {
-  font-size: 12px;
-
-  color: #888888;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 4px;
 }
-
 
 .footer-link {
-  color: #888888;
-
-  text-decoration: none;
-
-  border-bottom:
-    1px solid transparent;
-
-  transition:
-    color 0.2s ease,
-    border-color 0.2s ease;
+  color: #4f46e5;
 }
 
-
-.footer-link:hover {
-  color: #7a1f3d;
-
-  border-color: #7a1f3d;
-}
-
-
-/* =========================================
-   모바일
-========================================= */
+/* Mobile */
 
 @media (max-width: 700px) {
 
-  #pin-screen {
-    padding: 20px;
-  }
-
-
-  .pin-card {
-    padding:
-      38px 25px 35px;
-  }
-
-
-  .pin-project {
-    font-size: 21px;
-  }
-
-
-  .pin-title {
-    font-size: 16px;
-  }
-
-
   .container {
-    width:
-      calc(100% - 20px);
-
-    margin:
-      20px auto;
-
-    border-radius: 12px;
+    width: min(100% - 24px, 600px);
+    padding: 35px 0 30px;
   }
-
-
-  header {
-    padding:
-      32px 25px;
-  }
-
-
-  .organization {
-    font-size: 14px;
-  }
-
-
-  .project {
-    font-size: 22px;
-  }
-
 
   .title {
-    font-size: 16px;
+    font-size: 28px;
   }
 
+  .project {
+    font-size: 15px;
+  }
 
   .menu {
-    display: grid;
-
-    grid-template-columns:
-      repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
   }
 
-
-  .menu a {
-    width: 100%;
-
-    min-height: 76px;
-
-    gap: 7px;
-
-    padding:
-      13px 5px;
-
-    font-size: 12px;
-
-    line-height: 1.4;
+  .menu-item {
+    min-height: 105px;
+    padding: 16px 8px;
   }
 
-
-  .menu a.active::after {
-    left: 15%;
-
-    right: 15%;
-
-    height: 3px;
+  .menu-text {
+    font-size: 13px;
   }
 
-
-  .icon {
-    width: 27px;
-
-    height: 27px;
+  #content h1 {
+    font-size: 23px;
   }
-
-
-  .icon svg {
-    width: 15px;
-
-    height: 15px;
-  }
-
-
-  main {
-    margin: 18px;
-
-    padding:
-      30px 20px;
-  }
-
-
-  main h1 {
-    font-size: 24px;
-  }
-
 
   .file-item {
     align-items: flex-start;
-
-    padding:
-      18px 15px;
-
-    gap: 12px;
+    flex-direction: column;
   }
-
-
-  .file-info {
-    gap: 11px;
-  }
-
-
-  .file-icon {
-    width: 38px;
-
-    height: 38px;
-  }
-
-
-  .file-name {
-    font-size: 14px;
-
-    line-height: 1.5;
-  }
-
 
   .download-button {
-    min-width: 40px;
-
-    padding:
-      9px 10px;
+    width: 100%;
   }
-
-
-  .download-button span {
-    display: none;
-  }
-
 
   .contact-row {
-    align-items: flex-start;
-
-    flex-direction: column;
-
-    justify-content: center;
-
-    gap: 5px;
-
-    padding:
-      14px 0;
+    grid-template-columns: 1fr;
   }
-
 
   .contact-label {
-    width: auto;
-
-    font-size: 12px;
+    padding-bottom: 8px;
   }
-
 
   .contact-value {
-    font-size: 13px;
-
-    line-height: 1.5;
+    padding-top: 8px;
   }
 
-
-  .site-footer {
-    padding:
-      25px 20px 28px;
+  .pin-card {
+    padding: 34px 22px;
   }
 
-
-  .footer-title {
-    font-size: 12px;
-
-    line-height: 1.6;
+  .pin-title {
+    font-size: 24px;
   }
 
-
-  .footer-subtitle {
-    font-size: 11px;
+  .pin-input-area {
+    flex-direction: column;
   }
 
+  #pin-button {
+    width: 100%;
+    height: 50px;
+  }
 
-  .footer-info,
   .footer-contact {
-    font-size: 12px;
+    flex-direction: column;
+    gap: 2px;
   }
 
+  .footer-contact span {
+    display: none;
+  }
 }
-```
