@@ -32,15 +32,88 @@ function refreshIcons() {
 function showFormsPage(
   title,
   description,
-  fileName,
-  fileLink = null
+  files
 ) {
+
+  const fileList = files.map(
+    function(file) {
+
+      return `
+
+        <div class="file-item">
+
+          <div class="file-info">
+
+            <div class="file-icon">
+
+              <i data-lucide="file-text"></i>
+
+            </div>
+
+
+            <div class="file-text">
+
+              <div class="file-name">
+                ${file.name}
+              </div>
+
+            </div>
+
+          </div>
+
+
+          ${
+            file.link
+            ?
+            `
+            <a
+              href="${file.link}"
+              class="download-button"
+              download
+            >
+
+              <i data-lucide="download"></i>
+
+              <span>
+                다운로드
+              </span>
+
+            </a>
+            `
+            :
+            `
+            <span
+              class="download-button"
+              style="
+                background:#d8cdd1;
+                cursor:default;
+              "
+            >
+
+              <i data-lucide="clock-3"></i>
+
+              <span>
+                준비 중
+              </span>
+
+            </span>
+            `
+          }
+
+        </div>
+
+      `;
+
+    }
+  ).join("");
+
 
   content.innerHTML = `
 
     <h1>
       ${title}
     </h1>
+
 
     <p>
       ${description}
@@ -49,73 +122,7 @@ function showFormsPage(
 
     <div class="content-box">
 
-
-      <div class="file-item">
-
-
-        <div class="file-info">
-
-
-          <div class="file-icon">
-
-            <i data-lucide="file-text"></i>
-
-          </div>
-
-
-          <div class="file-text">
-
-
-            <div class="file-name">
-              ${fileName}
-            </div>
-
-
-          </div>
-
-
-        </div>
-
-
-        ${
-          fileLink
-          ?
-          `
-          <a
-            href="${fileLink}"
-            class="download-button"
-            download
-          >
-
-            <i data-lucide="download"></i>
-
-            <span>
-              다운로드
-            </span>
-
-          </a>
-          `
-          :
-          `
-          <a
-            href="#"
-            class="download-button"
-            onclick="return false;"
-          >
-
-            <i data-lucide="download"></i>
-
-            <span>
-              다운로드
-            </span>
-
-          </a>
-          `
-        }
-
-
-      </div>
-
+      ${fileList}
 
     </div>
 
@@ -151,7 +158,6 @@ function showContactPage() {
 
       <div class="contact-row">
 
-
         <div class="contact-label">
           예산 집행 담당자
         </div>
@@ -161,12 +167,11 @@ function showContactPage() {
           교수·학습센터 이재현 전임연구원
         </div>
 
-
       </div>
 
 
-      <div class="contact-row">
 
+      <div class="contact-row">
 
         <div class="contact-label">
           연락처
@@ -184,12 +189,11 @@ function showContactPage() {
 
         </div>
 
-
       </div>
 
 
-      <div class="contact-row">
 
+      <div class="contact-row">
 
         <div class="contact-label">
           이메일
@@ -206,7 +210,6 @@ function showContactPage() {
           </a>
 
         </div>
-
 
       </div>
 
@@ -262,9 +265,12 @@ function showPage(page) {
 
       "대학 AI 기본교육과정 개발 및 운영에 필요한 서식을 확인하고 다운로드할 수 있습니다.",
 
-      "서식 파일",
-
-      null
+      [
+        {
+          name: "서식 파일",
+          link: null
+        }
+      ]
 
     );
 
@@ -283,9 +289,12 @@ function showPage(page) {
 
       "교수자 AI 역량 강화 프로그램 운영에 필요한 서식을 확인하고 다운로드할 수 있습니다.",
 
-      "1. 프로그램 운영 계획(안) 양식",
-
-      "프로그램_운영_계획(안)_양식.hwp"
+      [
+        {
+          name: "1. 프로그램 운영 계획(안) 양식",
+          link: "프로그램_운영_계획(안)_양식.hwp"
+        }
+      ]
 
     );
 
@@ -304,9 +313,44 @@ function showPage(page) {
 
       "대학 AI 기본교육과정 개발 지원 사업의 예산 집행에 필요한 서식을 확인하고 다운로드할 수 있습니다.",
 
-      "서식 파일",
+      [
 
-      null
+        {
+          name: "1. 보조인력 근무일지",
+          link: null
+        },
+
+        {
+          name: "2. 특강(강사)비",
+          link: null
+        },
+
+        {
+          name: "3. 특강 실시 계획서",
+          link: null
+        },
+
+        {
+          name: "4. 자문비",
+          link: null
+        },
+
+        {
+          name: "5. 멘토링비",
+          link: null
+        },
+
+        {
+          name: "6. 회의비",
+          link: null
+        },
+
+        {
+          name: "7. 간담회비",
+          link: null
+        }
+
+      ]
 
     );
 
@@ -337,6 +381,7 @@ function checkPin() {
 
 
   if (enteredPin === CORRECT_PIN) {
+
 
     pinScreen.style.display =
       "none";
