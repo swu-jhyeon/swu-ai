@@ -16,36 +16,16 @@ function refreshIcons() {
 }
 
 
-function showFormsPage(title, description, fileName, fileLink = null) {
-
-  let buttonHtml = "";
-
-  if (fileLink) {
-    buttonHtml = `
-      <a
-        href="${fileLink}"
-        class="download-button"
-        download
-      >
-        <i data-lucide="download"></i>
-        <span>다운로드</span>
-      </a>
-    `;
-  } else {
-    buttonHtml = `
-      <span class="download-button">
-        <i data-lucide="clock"></i>
-        <span>준비 중</span>
-      </span>
-    `;
-  }
+function showFormsPage(title, description) {
 
   content.innerHTML = `
+
     <h1>${title}</h1>
 
     <p>${description}</p>
 
     <div class="content-box">
+
       <div class="file-item">
 
         <div class="file-info">
@@ -55,14 +35,33 @@ function showFormsPage(title, description, fileName, fileLink = null) {
           </div>
 
           <div class="file-text">
-            <div class="file-name">${fileName}</div>
+
+            <div class="file-name">
+              서식 파일
+              <span class="file-type">
+                준비 중
+              </span>
+            </div>
+
+            <div class="file-description">
+              실제 서식 파일은 추후 등록 예정입니다.
+            </div>
+
           </div>
 
         </div>
 
-        ${buttonHtml}
+        <a
+          href="#"
+          class="download-button"
+          onclick="return false;"
+        >
+          <i data-lucide="download"></i>
+          <span>다운로드</span>
+        </a>
 
       </div>
+
     </div>
   `;
 
@@ -73,6 +72,7 @@ function showFormsPage(title, description, fileName, fileLink = null) {
 function showContactPage() {
 
   content.innerHTML = `
+
     <h1>문의처</h1>
 
     <p>
@@ -83,86 +83,55 @@ function showContactPage() {
     <div class="contact-box">
 
       <div class="contact-row">
-        <div class="contact-label">예산 집행 담당자</div>
+
+        <div class="contact-label">
+          예산 집행 담당자
+        </div>
+
         <div class="contact-value">
           교수·학습센터 이재현 전임연구원
         </div>
+
       </div>
 
       <div class="contact-row">
-        <div class="contact-label">연락처</div>
+
+        <div class="contact-label">
+          연락처
+        </div>
+
         <div class="contact-value">
-          <a href="tel:02-970-5048" class="contact-link">
+
+          <a
+            href="tel:02-970-5048"
+            class="contact-link"
+          >
             02-970-5048
           </a>
+
         </div>
+
       </div>
 
       <div class="contact-row">
-        <div class="contact-label">이메일</div>
+
+        <div class="contact-label">
+          이메일
+        </div>
+
         <div class="contact-value">
-          <a href="mailto:jhyeon@swu.ac.kr" class="contact-link">
+
+          <a
+            href="mailto:jhyeon@swu.ac.kr"
+            class="contact-link"
+          >
             jhyeon@swu.ac.kr
           </a>
-        </div>
-      </div>
-
-    </div>
-  `;
-
-  refreshIcons();
-}
-
-
-function showBudgetPage() {
-
-  const forms = [
-    "1. 보조인력 근무일지",
-    "2. 특강(강사)비",
-    "3. 특강 실시 계획서",
-    "4. 자문비",
-    "5. 멘토링비",
-    "6. 회의비",
-    "7. 간담회비"
-  ];
-
-  const items = forms.map(function(form) {
-
-    return `
-      <div class="file-item">
-
-        <div class="file-info">
-
-          <div class="file-icon">
-            <i data-lucide="file-text"></i>
-          </div>
-
-          <div class="file-text">
-            <div class="file-name">${form}</div>
-          </div>
 
         </div>
 
-        <span class="download-button">
-          <i data-lucide="clock"></i>
-          <span>준비 중</span>
-        </span>
-
       </div>
-    `;
 
-  }).join("");
-
-  content.innerHTML = `
-    <h1>예산 집행 시 필요 서식</h1>
-
-    <p>
-      대학 AI 기본교육과정 개발 지원 사업의 예산 집행에 필요한
-      서식을 확인하고 다운로드할 수 있습니다.
-    </p>
-
-    <div class="content-box">
-      ${items}
     </div>
   `;
 
@@ -176,9 +145,10 @@ function showPage(page) {
     item.classList.remove("active");
   });
 
-  const selectedMenu = document.querySelector(
-    '.menu-item[data-page="' + page + '"]'
-  );
+  const selectedMenu =
+    document.querySelector(
+      `.menu-item[data-page="${page}"]`
+    );
 
   if (selectedMenu) {
     selectedMenu.classList.add("active");
@@ -189,12 +159,9 @@ function showPage(page) {
 
     showFormsPage(
       "AI 기본교육과정 개발·운영 관련 서식",
-      "대학 AI 기본교육과정 개발 및 운영에 필요한 서식을 확인하고 다운로드할 수 있습니다.",
-      "서식 파일",
-      null
+      "대학 AI 기본교육과정 개발 및 운영에 필요한 서식을 확인하고 다운로드할 수 있습니다."
     );
 
-    return;
   }
 
 
@@ -202,35 +169,32 @@ function showPage(page) {
 
     showFormsPage(
       "교수자 AI 역량 강화 프로그램 관련 서식",
-      "교수자 AI 역량 강화 프로그램 운영에 필요한 서식을 확인하고 다운로드할 수 있습니다.",
-      "1. 프로그램 운영 계획(안) 양식",
-      "프로그램_운영_계획(안)_양식.hwp"
+      "교수자 AI 역량 강화 프로그램 운영에 필요한 서식을 확인하고 다운로드할 수 있습니다."
     );
 
-    return;
   }
 
 
   if (page === "budget") {
 
-    showBudgetPage();
+    showFormsPage(
+      "예산 집행 시 필요 서식",
+      "대학 AI 기본교육과정 개발 지원 사업의 예산 집행에 필요한 서식을 확인하고 다운로드할 수 있습니다."
+    );
 
-    return;
   }
 
 
   if (page === "contact") {
-
     showContactPage();
-
-    return;
   }
 }
 
 
 function checkPin() {
 
-  const enteredPin = pinInput.value.trim();
+  const enteredPin =
+    pinInput.value.trim();
 
   if (enteredPin === CORRECT_PIN) {
 
@@ -248,39 +212,55 @@ function checkPin() {
     return;
   }
 
-  pinError.textContent = "PIN 번호가 올바르지 않습니다.";
+  pinError.textContent =
+    "PIN 번호가 올바르지 않습니다.";
+
   pinInput.value = "";
   pinInput.focus();
 }
 
 
-pinButton.addEventListener("click", checkPin);
+pinButton.addEventListener(
+  "click",
+  checkPin
+);
 
 
-pinInput.addEventListener("keydown", function(event) {
+pinInput.addEventListener(
+  "keydown",
+  function(event) {
 
-  if (event.key === "Enter") {
-    checkPin();
+    if (event.key === "Enter") {
+      checkPin();
+    }
+
   }
+);
 
-});
 
+menuItems.forEach(
+  function(item) {
 
-menuItems.forEach(function(item) {
+    item.addEventListener(
+      "click",
+      function(event) {
 
-  item.addEventListener("click", function(event) {
+        event.preventDefault();
 
-    event.preventDefault();
+        const page =
+          item.getAttribute("data-page");
 
-    const page = item.getAttribute("data-page");
+        showPage(page);
 
-    showPage(page);
+      }
+    );
 
-  });
-
-});
+  }
+);
 
 
 showPage("ai-basic");
+
 refreshIcons();
+
 pinInput.focus();
